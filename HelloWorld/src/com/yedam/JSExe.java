@@ -1,9 +1,6 @@
 package com.yedam;
-<<<<<<< HEAD
 // Heaven JAVA
-=======
 // 자바 좋아
->>>>>>> branch 'master' of https://github.com/MoCo-43/HelloWorld.git
 public class JSExe {
 	public static void main(String[] args) {
 		test2();
