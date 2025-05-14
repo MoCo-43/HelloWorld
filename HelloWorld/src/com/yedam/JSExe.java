@@ -1,6 +1,5 @@
 package com.yedam;
-// fuck JAVA
-//그냥 파이썬이 좋음 암튼 좋음
+// 자바 좋아
 public class JSExe {
 	public static void main(String[] args) {
       // 변경된 부분
