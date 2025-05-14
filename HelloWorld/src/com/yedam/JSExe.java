@@ -1,19 +1,20 @@
 package com.yedam;
+
 // Heaven JAVA
 // 자바 좋아
-// ㅗㅗㅗㅗㅗㅗㅗ 자바
 public class JSExe {
-	public static void main(String[] args) {
-		test2();
-      // 변경된 부분
 
-      // 임의의 수를 생성 1 ~ 100사이의 임의의 값을 생성
-      int sum = 0;
-      for (int i =0; i<=5; i++) {
-    	  int result = (int) (Math.random() * 100) + 1; // 1 <= x < 11
-    	  sum+=result;
-      }
-      System.out.println("결과 : " + sum);
+	public static void main(String[] args) {
+		int num1 = 30;
+		int num2 = 30;
+		System.out.println(num1 == num2);
+
+		String str1 = new String("Hello");
+		String str2 = new String("Hello");
+		System.out.println(str1);
+		System.out.println(str2);
+		// 문자열을 비교할 경우에는 equals 사용
+		System.out.println(str1.equals(str2));
 	} // end of main
 
 	public static void test() {
@@ -25,8 +26,16 @@ public class JSExe {
 			}
 		}
 		System.out.println("결과 : " + sum);
+
+		// 임의의 수를 생성 1 ~ 100사이의 임의의 값을 생성
+		int sum = 0;
+		for (int i = 0; i <= 5; i++) {
+			int result = (int) (Math.random() * 100) + 1; // 1 <= x < 11
+			sum += result;
+		}
+		System.out.println("결과 : " + sum);
 	} // end of test
-	
+
 	public static void test2() {
 		int sum = 0;
 		for (int i = 0; i <= 5; i++) {
@@ -35,5 +44,6 @@ public class JSExe {
 
 		}
 		System.out.println("결과 : " + sum);
-	}
+	} // end of test2
+
 } // end of class
