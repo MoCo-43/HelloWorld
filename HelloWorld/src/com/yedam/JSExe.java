@@ -1,6 +1,6 @@
 package com.yedam;
 // 자바 좋아
-// ㅗㅗㅗㅗㅗㅗㅗ 자바
+
 public class JSExe {
 	public static void main(String[] args) {
       // 변경된 부분
