@@ -1,5 +1,6 @@
 package com.yedam;
 // fuck JAVA
+//그냥 파이썬이 좋음 암튼 좋음
 public class JSExe {
 	public static void main(String[] args) {
 		test2();
