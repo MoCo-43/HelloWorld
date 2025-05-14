@@ -1,5 +1,5 @@
 package com.yedam;
-
+// fuck JAVA
 public class JSExe {
 	public static void main(String[] args) {
       // 변경된 부분
