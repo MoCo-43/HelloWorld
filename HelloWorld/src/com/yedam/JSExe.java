@@ -2,7 +2,15 @@ package com.yedam;
 
 public class JSExe {
 	public static void main(String[] args) {
-		test2();
+      // 변경된 부분
+
+      // 임의의 수를 생성 1 ~ 100사이의 임의의 값을 생성
+      int sum = 0;
+      for (int i =0; i<=5; i++) {
+    	  int result = (int) (Math.random() * 100) + 1; // 1 <= x < 11
+    	  sum+=result;
+      }
+      System.out.println("결과 : " + sum);
 	} // end of main
 
 	public static void test() {
