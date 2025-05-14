@@ -29,7 +29,7 @@ public class JSExe {
 		// test3(); //
 		// test4(); // 스캐너 사용
 		// test5();
-		test5();
+		test5_1();
 		//test5_2();
 	} // end of main
 
@@ -140,7 +140,7 @@ public class JSExe {
 				continue;
 			} else {
 				System.out.println("다시 입력해주세요.");
-				continue;
+				break;
 			}
 		}
 	} // end of test5_1
@@ -148,18 +148,28 @@ public class JSExe {
 	// 교수님 작성한 test5_1 코드 
 	// 홍길동 김민규 최석영
 	public static void test5_2() {
-	Scanner scn = new Scanner(System.in);
-	String str = "친구목록은 ";
-	while(true) {
-		System.out.println("친구이름 입력, 종료하려면 quit>>");
-		String msg = scn.nextLine();
-		
-		if (msg.equals("quit")) {
-			str += " 입니다.";
-			break;
+
+		Scanner scn = new Scanner(System.in);
+		// 입력값을 누적할 변수.
+		String str = "친구목록은 ";
+		while (true) {
+			System.out.println("친구이름 입력. 종료하려면 quit>>");
+			String msg = scn.nextLine();
+			// equals로 비교.
+			if (msg.equals("quit")) {
+				str += " 입니다";
+				break;
+			}
+//			System.out.println("입력한 값은 " + msg);
+			str += msg + ", ";
 		}
-		str += msg + ", ";
+		// 홍길동, 김민규, 최석영
+		// 친구목록은 홍길동, 김민규, 최석영 입니다.
+		System.out.println(str);
+		System.out.println("end of prog.");
 	}
-	System.out.println(str);
-	} // end of test5_2
 } // end of class
+
+/* 
+ <<<<<     과제     >>>>>
+*/
