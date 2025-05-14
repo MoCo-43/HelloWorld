@@ -1,5 +1,5 @@
 package com.yedam;
-
+// fuck JAVA
 public class JSExe {
 	public static void main(String[] args) {
 		test2();
