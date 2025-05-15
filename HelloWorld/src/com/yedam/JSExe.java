@@ -29,8 +29,9 @@ public class JSExe {
 		// test3(); //
 		// test4(); // 스캐너 사용
 		// test5();
-		test5_1();
-		//test5_2();
+		// test5_2();
+		test6();
+		
 	} // end of main
 
 	public static void test() {
@@ -143,12 +144,13 @@ public class JSExe {
 				break;
 			}
 		}
+		scn.close();
 	} // end of test5_1
-	
-	// 교수님 작성한 test5_1 코드 
+
+	// 교수님 작성한 test5_1 코드
 	// 홍길동 김민규 최석영
 	public static void test5_2() {
-
+		boolean isFirst= true;
 		Scanner scn = new Scanner(System.in);
 		// 입력값을 누적할 변수.
 		String str = "친구목록은 ";
@@ -161,15 +163,32 @@ public class JSExe {
 				break;
 			}
 //			System.out.println("입력한 값은 " + msg);
-			str += msg + ", ";
+			if (isFirst) {
+				str += msg;
+				isFirst = false;
+			} else {
+				str += ", " + msg;
+			}
 		}
 		// 홍길동, 김민규, 최석영
 		// 친구목록은 홍길동, 김민규, 최석영 입니다.
 		System.out.println(str);
 		System.out.println("end of prog.");
-	}
-} // end of class
+		scn.close();
+	} // end of test5_2
 
-/* 
- <<<<<     과제     >>>>>
-*/
+//변수출력 연습
+	public static void test6() {
+		// printf("형식문자열", 값1, 값2...)
+		System.out.printf("%s %d %f %.2f\t", "문자", 30, 31.1, 32.5555); // %s 문자열 값, %d 정수, %f 실수, %.2f 소수점 2자리까지 출력 \n 줄바꿈, \t 탭
+		System.out.printf("%s %d %.1f\n\n", "홍길동", 100, 23.9);
+		
+		String formatStr = "안녕하세요. %s입니다.\n";
+		formatStr += "나이는 %d세입니다.\n";
+		formatStr += "몸무게는 %.1f입니다.\n\n\n";
+		System.out.printf(formatStr, "정경준", 28, 71.5);
+		System.out.printf("안녕하세요. 이름은 %s입니다.\n나이는 %d세 입니다.\n몸무게는 %.1f입니다", "정경준", 28, 71.5);
+	} // end of test6
+	
+	
+} // end of class
