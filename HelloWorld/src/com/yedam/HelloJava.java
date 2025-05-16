@@ -19,5 +19,6 @@ public class HelloJava {
 		// 20 + 30 => 50
 //		System.out.println("결과는 " + 20 + 30); // 문자열로 출력 됨 
 		System.out.println("결과는 " + (20 + 30));
+
 	}
 }
