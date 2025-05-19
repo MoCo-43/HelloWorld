@@ -3,7 +3,7 @@ package com.yedam.ref.app;
 import java.util.Scanner;
   
 public class MemberExe {
-	static Member[] members = null;
+
 	/*
 	 * 회원 추가, 수정, 삭제, 조회 기능
 	 * 
@@ -20,9 +20,8 @@ public class MemberExe {
 	 *    - 이름(조회)
 	 */
 public static void main(String[] args) {
-	
 	boolean run = true;
-	int allMember=0;
+	Member[] members = new Member[10];
 	Scanner scanner = new Scanner(System.in);
 	while(run) {
 		System.out.println("==================회원관리===================");
@@ -32,21 +31,17 @@ public static void main(String[] args) {
 		int selectNo = Integer.parseInt(scanner.nextLine());
 	
 		// 회원가입
-		if (selectNo == 1) {
-			System.out.println("추가할 회원 수>> ");
-			allMember=Integer.parseInt(scanner.nextLine());
-			members=new Member[allMember];	// 배열의 크기를 지정
-		  for(int i = 0; i<members.length; i++) {
+		switch (selectNo) {
+		case 1: // 추가
 			System.out.printf("추가하실 아이디를 입력해주세요>>  ");
 			String id = scanner.nextLine();
 			System.out.printf("추가하실 이름을 입력해주세요>>  ");
 			String name = scanner.nextLine();
 			System.out.printf("추가하실 전화번호를 입력해주세요>>  ");
 			String telephone = scanner.nextLine();
-			System.out.printf("가입시 1000포인트 적립\n");
-			int id_Point = 1000;
+			System.out.printf("포인트 입력해 주세요>> ");
+			int id_Point = Integer.parseInt(scanner.nextLine());
 
-				
 			// 인스턴스 생성
 			Member member = new Member();
 			member.id=id;
@@ -54,33 +49,72 @@ public static void main(String[] args) {
 			member.telephone=telephone;			
 			member.id_Point=id_Point;			
 			
-			// 배열에 저장
-			members[i] = member;
+			// 배열에 추가
+			for (int i=0; i<members.length; i++) {
+			  if (members[i] == null) {
+				  members[i] = member;
+				  System.out.println("등록완료");
+			      }
 			}
+			break;
 		  
           // 회원수정
-		} else if (selectNo == 2) {
+		case 2: 
 			System.out.println("수정하실 회원의 아이디를 입력해주세요>> ");
+			id = scanner.nextLine();
+			System.out.println("수정하실 회원의 전화번호를 입력해주세요>> ");
+			telephone = scanner.nextLine();
+			
+			// 같은 값을 찾아서 변경하기.
+			for (int i = 0; i < members.length; i++) {
+				if (members[i] != null) {
+					if (members[i].id.equals(id)) {
+						members[i].telephone = telephone;
+						System.out.println("수정완료.");
+					}
+				}
+			}
+			break;
 		  
 		  // 회원삭제
-		} else if (selectNo == 3) {
-			
+		case 3:
+			System.out.print("아이디를 입력>> ");
+			id = scanner.nextLine();
+
+			// 같은 값을 찾아서 삭제하기.
+			for (int i = 0; i < members.length; i++) {
+				if (members[i] != null) {
+					if (members[i].id.equals(id)) {
+						members[i] = null;
+						System.out.println("삭제완료.");
+					}
+				}
+			}
+			break;	
 			
 		  // 회원조회
-		} else if (selectNo == 4) {
-			System.out.println("id를 입력해주세요>>");
-			String id = scanner.nextLine();
-			for(int i=0; i<members.length; i++) {
-				
+		case 4: // 조회.
+			System.out.print("이름를 입력>> ");
+			name = scanner.nextLine();
+
+			// 조회.
+			System.out.printf("%-10s %-5s %-15s\n", "UserId", "회원명", "TelNo");
+			for (int i = 0; i < members.length; i++) {
+				if (members[i] != null && (name.equals("") || name.equals(members[i].name))) {
+					System.out.printf("%-10s %-5s %-15s\n", members[i].id, members[i].name,
+							members[i].telephone);
+				}
 			}
-			if (members == id) {
-				System.out.println(allMember);
-			}
+			break;
 		 // 프로그램 종료
-		} else if (selectNo == 5) {
-			run=false;
+		case 5: // 종료.
+			run = false;
+			break;
+			
+		default:
+			System.out.println("메뉴를 다시 선택하세요.");
 		}
-	}
+		}
 	scanner.close();
   }
 }
