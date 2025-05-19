@@ -47,7 +47,7 @@ public static void main(String[] args) {
 			member.id=id;
 			member.name=name;			
 			member.telephone=telephone;			
-			member.id_Point=id_Point;			
+			member.id_Point=id_Point;
 			
 			// 배열에 추가
 			for (int i=0; i<members.length; i++) {
@@ -60,7 +60,7 @@ public static void main(String[] args) {
 		  
           // 회원수정
 		case 2: 
-			System.out.println("수정하실 회원의 아이디를 입력해주세요>> ");
+			System.out.println("회원의 아이디를 입력해주세요>> ");
 			id = scanner.nextLine();
 			System.out.println("수정하실 회원의 전화번호를 입력해주세요>> ");
 			telephone = scanner.nextLine();
@@ -70,7 +70,7 @@ public static void main(String[] args) {
 				if (members[i] != null) {
 					if (members[i].id.equals(id)) {
 						members[i].telephone = telephone;
-						System.out.println("수정완료.");
+						System.out.println("전화번호 수정완료.");
 					}
 				}
 			}
@@ -78,7 +78,7 @@ public static void main(String[] args) {
 		  
 		  // 회원삭제
 		case 3:
-			System.out.print("아이디를 입력>> ");
+			System.out.print("아이디를 입력하세요>> ");
 			id = scanner.nextLine();
 
 			// 같은 값을 찾아서 삭제하기.
@@ -86,7 +86,7 @@ public static void main(String[] args) {
 				if (members[i] != null) {
 					if (members[i].id.equals(id)) {
 						members[i] = null;
-						System.out.println("삭제완료.");
+						System.out.println("회원 삭제완료.");
 					}
 				}
 			}
@@ -94,13 +94,13 @@ public static void main(String[] args) {
 			
 		  // 회원조회
 		case 4: // 조회.
-			System.out.print("이름를 입력>> ");
-			name = scanner.nextLine();
+			System.out.print("아이디를 입력>> ");
+			id = scanner.nextLine();
 
 			// 조회.
-			System.out.printf("%-10s %-5s %-15s\n", "UserId", "회원명", "TelNo");
+			System.out.printf("%-10s %-5s %-15s\n", "유저ID", "회원명", "전화번호");
 			for (int i = 0; i < members.length; i++) {
-				if (members[i] != null && (name.equals("") || name.equals(members[i].name))) {
+				if (members[i] != null && (id.equals("") || id.equals(members[i].id))) {
 					System.out.printf("%-10s %-5s %-15s\n", members[i].id, members[i].name,
 							members[i].telephone);
 				}
