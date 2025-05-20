@@ -10,7 +10,7 @@ package com.yedam.ref.app;
  *
  * 
  */
-public class Member{
+public class Member{  // 객체의 필드
   String id;
   String name;
   String telephone;
