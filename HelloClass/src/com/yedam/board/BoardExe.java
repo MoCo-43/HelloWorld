@@ -47,15 +47,53 @@ public class BoardExe {
 		
 		
 		// 아이디를 입력해주세요
-		String userId= userMessage("아이디를 입력해주세요");
-		// 비밀번호 입력해주세요
-		String passWd = userMessage("비밀번호를 입력해주세요");
+		
+		// 1) 로그인 시도 횟수 카운터를 3으로 시작
+		int loginCount = 3;
+		// 2) 로그인 성공 플래그는 아직 false
+		boolean loginCheck = false;
 
-		  if (!UserExe.login(userId, passWd)) {
-		  System.out.println("아이디와 비밀번호를 확인하세요.");
-		  return;
-		  }
-		  System.out.println("로그인 성공");
+		// 3) loginCheck가 false(실패) 이고, 남은 횟수가 있을 때만 반복
+		while (!loginCheck && loginCount > 0) {
+		    // 사용자 입력
+		    String userId = userMessage("아이디를 입력해주세요");
+		    String passWd = userMessage("비밀번호를 입력해주세요");
+
+		    // 로그인 검사
+		    loginCheck = UserExe.login(userId, passWd);
+		    if (loginCheck) {
+		        System.out.println("로그인 성공\n");
+		        run = true;
+		    } else {
+		        loginCount--;  // 실패했으니 남은 횟수 감소
+		        System.out.printf("로그인 실패. 남은 기회: %d회\n\n", loginCount);
+		    }
+		}
+
+		// 4) 3회 모두 실패했으면 execute() 종료
+		if (!loginCheck) {
+		    System.out.println("로그인 3회 실패. 프로그램을 종료합니다.");
+		    return;
+		}
+		
+//		while(loginCount < 3) {
+//		if (loginCheck == true) {
+//		  System.out.println("로그인 성공");
+//		  run = true;
+//		} else if (!loginCheck || loginCount == 0) {
+//			loginCount--;
+//			System.out.println("아이디와 비밀번호를 다시 확인해주세요\n");
+//			System.out.printf("로그인 남은 횟수 : %d", loginCount);
+//		  }
+//		}
+		
+		
+//		  if (!UserExe.login(userId, passWd) ) {
+//		  System.out.println("아이디와 비밀번호를 확인하세요.");
+//	
+//		  return;
+//		  }
+//		  System.out.println("로그인 성공");
 
 
 		// 로그인 성공이면 true 반환
