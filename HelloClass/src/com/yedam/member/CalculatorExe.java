@@ -1,6 +1,6 @@
 package com.yedam.member;
 
-import com.yedam.member.Member;
+//import com.yedam.member.Member;
 
 public class CalculatorExe {
 	public static void main(String[] args) {

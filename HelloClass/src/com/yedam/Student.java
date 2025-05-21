@@ -82,4 +82,16 @@ public class Student {
 	int getMathScore() {
 		return mathScore;
 	}
+
+	double getHeight() {
+		return height;
+	}
+
+	void setHeight(double height) {
+		this.height = height;
+	}
+	
+	
 }
+
+

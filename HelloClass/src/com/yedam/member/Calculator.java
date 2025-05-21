@@ -1,6 +1,5 @@
 package com.yedam.member;
 
-import com.yedam.member.Member;
 
 /*
  * 메소드 연습
