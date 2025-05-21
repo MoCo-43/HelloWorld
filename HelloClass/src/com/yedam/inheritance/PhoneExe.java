@@ -29,7 +29,7 @@ public class PhoneExe {
 		phone3.channel = 3;
 
 		// (3) instanceof 매소드를 변환가능한지 체크
-		// phone1은 SmartPhone instance가 아니니 false이므로 에러 발생
+		// phone1은 SmartPhone instance가 아니어 false 이므로 작동하지 않음
 		if (phone1 instanceof SmartPhone) {
 			phone3 = (SmartPhone) phone1;
 			phone3.channel = 3;
