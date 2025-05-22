@@ -13,7 +13,7 @@ import java.util.Date;
 public class CalendarExe {
 	
 	public static void main(String[] args) {
-		makeCalendar(2025, 5);
+		makeCalendar(2025, 4);
 
 		
 	}	
@@ -30,12 +30,12 @@ public class CalendarExe {
 		// int months() {}
 		// 
 		
-		System.out.printf("       %d년 %02d월\n"                  , year, month);
-		System.out.printf("====================================");
-		System.out.println(" Sun Mon Tue Wed Thu Fri Sat");
+
 			
 
-		int mon = 1; // 월정보
+		int mon = month; // 월정보
+		System.out.printf("       %d년 %02d월\n"                  , year, month);
+		System.out.printf("===============================\n");
 			System.out.println(" Sun Mon Tue Wed Thu Fri Sat");
 			int space = getSpace(mon);
 			int lastDate = getLastDate(mon);
@@ -52,22 +52,23 @@ public class CalendarExe {
 					System.out.println();
 				}
 			}
+			System.out.println();
 		}
 
 		// "월" 정보를 입력하면 "공란"반환하는 메소드 getSpace();
 		public static int getSpace(int month) {
           int space = 0;
           Calendar now = Calendar.getInstance();
-          now.set(2025,  month - 1, 1);  // 1월달 시작점이 달라서
-          space = now.get(Calendar.DAY_OF_WEEK);
+          now.set(2025,  month-1, 1);  // 1월달 시작점이 달라서
+          space = now.get(Calendar.DAY_OF_WEEK)-1;
           return space;
 		} // end of getSpace
 
 		// "월" 정보를 입력하면 말일을 알려주는 메소드 getLastDate(월)
 		public static int getLastDate(int month) {
-			int lastDate = 31;
+			int lastDate = 0;
 			Calendar now = Calendar.getInstance();
-			now.set(2025, month -1, 1);  // 5월로 설정
+			now.set(2025, month-1, 1);  // 5월로 설정
 		    lastDate = now.getActualMaximum(Calendar.DATE);
 		    return lastDate;
 		} // end of getLastDate
@@ -98,7 +99,6 @@ public class CalendarExe {
 	
 	
     }
-	
 	
 	public static void Cal() {
 		// Calendar 클래스
