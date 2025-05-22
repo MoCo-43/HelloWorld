@@ -5,14 +5,12 @@ import java.util.Scanner;
 public class BoardExe {
 
 //추가(addBoard) 
- //수정 (modifyBoard) - 글번호, 바뀔내용, 바뀔제목 
+	// 수정 (modifyBoard) - 글번호, 바뀔내용, 바뀔제목
 //삭제 (removeBoard) - 글번호
 //목록(boardList) - 상세화면 조회 글번호를 기준으로 수정 삭제 
- //조회가능 (글번호 -> 글반환)하는 메소드 필요 => getBoard
-
+	// 조회가능 (글번호 -> 글반환)하는 메소드 필요 => getBoard
 
 // 순번부여(nextSequence) - 현재 글 번호를 가져와 +1 을 하면 순번
-
 
 	// 필드
 	private Board[] boards; // 배열형태로 데이터 저장
@@ -35,77 +33,83 @@ public class BoardExe {
 		boards[10] = new Board(20, "날씨가 덥네요.20 ", "오늘 하루 힘내요", "홍길순");
 	}
 
+	// loginCheck()
+	boolean loginCheck() {		
+		for (int i = 1; i <= 3; i++) {
+			String id = userMessage("아이디를 입력");
+			String pw = userMessage("비밀번호를 입력");
+			// 로그인 성공하면...
+			if (!UserExe.login(id, pw)) {
+				System.out.println("아이디와 비밀번호를 확인하세요.");
+				if (i == 3) {
+					System.out.println("3번 실패했습니다. 종료합니다.");
+					return false;
+				}
+				continue;
+			}  // 실패의 경우
+			return true; // 로그인을 성공하면 언제라도 반복문을 빠져 나와서 아래 코드를 실행.
+		} // 3번의 기회를 제공.	
+		return false;
+	}  // end of loginCheck()
+	
+	
+	
+
 	// 메소드
 	void execute() {
-		boolean run = false;
-		
+//        if(!loginCheck()) {
+//        	return;  // excute(); 메소드의 종료
+//        } 
+        boolean run = loginCheck();
+		System.out.println("환영합니다!!!");
+
 		// 250521 과제
 		// 로그인 3번의 기회를 주는데
 		// 3번 후에는 로그인 실패라고 하고 프로그램 종료
-		
-		
-		
-		
 		// 아이디를 입력해주세요
-		
-		// 1) 로그인 시도 횟수 카운터를 3으로 시작
-		int loginCount = 3;
-		// 2) 로그인 성공 플래그는 아직 false
-		boolean loginCheck = false;
-
-		// 3) loginCheck가 false(실패) 이고, 남은 횟수가 있을 때만 반복
-		while (!loginCheck && loginCount > 0) {
-		    // 사용자 입력
-		    String userId = userMessage("아이디를 입력해주세요");
-		    String passWd = userMessage("비밀번호를 입력해주세요");
-
-		    // 로그인 검사
-		    loginCheck = UserExe.login(userId, passWd);
-		    if (loginCheck) {
-		        System.out.println("로그인 성공\n");
-		        run = true;
-		    } else {
-		        loginCount--;  // 실패했으니 남은 횟수 감소
-		        System.out.printf("로그인 실패. 남은 기회: %d회\n\n", loginCount);
-		    }
-		}
-
-		// 4) 3회 모두 실패했으면 execute() 종료
-		if (!loginCheck) {
-		    System.out.println("로그인 3회 실패. 프로그램을 종료합니다.");
-		    return;
-		}
-		
-//		while(loginCount < 3) {
-//		if (loginCheck == true) {
-//		  System.out.println("로그인 성공");
-//		  run = true;
-//		} else if (!loginCheck || loginCount == 0) {
-//			loginCount--;
-//			System.out.println("아이디와 비밀번호를 다시 확인해주세요\n");
-//			System.out.printf("로그인 남은 횟수 : %d", loginCount);
-//		  }
-//		}
-		
-		
-//		  if (!UserExe.login(userId, passWd) ) {
-//		  System.out.println("아이디와 비밀번호를 확인하세요.");
-//	
-//		  return;
-//		  }
-//		  System.out.println("로그인 성공");
-
-
 		// 로그인 성공이면 true 반환
 		// 로그인 실패하면 false를 반환하여 while문을 못돌리게 하여 진행하지 못하도록 혹은 다시 입력하세요 ㄱㄱ
+		
+//		boolean run = false;
+//		int loginCount = 3;  // 1) 로그인 시도 횟수 카운터를 3으로 시작
+//		boolean loginCheck = false;  // 2) 로그인 성공 플래그는 아직 false
+//
+//		while (!loginCheck && loginCount > 0) {  // 3) loginCheck가 false(실패) 이고, 남은 횟수가 있을 때만 반복
+//			// 사용자 입력
+//			String userId = userMessage("아이디를 입력해주세요");
+//			String passWd = userMessage("비밀번호를 입력해주세요");
+//
+//			// 로그인 검사
+//			loginCheck = UserExe.login(userId, passWd);
+//			if (loginCheck) {
+//				System.out.println("로그인 성공\n");
+//				run = true;
+//			} else {
+//				loginCount--; // 실패했으니 남은 횟수 감소
+//				System.out.printf("로그인 실패. 남은 기회: %d회\n\n", loginCount);
+//			}
+//		}
+//
+//		// 4) 3회 모두 실패했으면 execute() 종료
+//		if (!loginCheck) {
+//			System.out.println("로그인 3회 실패. 프로그램을 종료합니다.");
+//			return;
+//		}
+	
 		while (run) {
 			System.out.println("------------------------------------------");
 			System.out.println("1.추가   2.수정   3.삭제   4.목록   5.종료");
 			System.out.println("------------------------------------------");
 			System.out.println("선택>> ");
-
-			int selectNo = Integer.parseInt(scn.nextLine());
-
+			// 문자를 숫자 변경 예외발생
+			int selectNo = 0;
+			try {
+			selectNo = Integer.parseInt(scn.nextLine());
+			}
+			catch(NumberFormatException e) {
+				System.out.println("1 ~ 5번중에 선택");
+				continue;
+			}
 			switch (selectNo) {
 			case 1: // 추가
 				addBoard();
@@ -137,6 +141,7 @@ public class BoardExe {
 	// "추가 성공" / "추가 실패" 메세지출력
 	void addBoard() {
 		int no = nextSequence(); // Integer.parseInt(userMessage("글번호를 입력하세요"));
+
 		String title = userMessage("제목을 입력하세요");
 		String content = userMessage("내용을 입력하세요");
 		String writer = userMessage("작성자를 입력하세요");
@@ -176,7 +181,8 @@ public class BoardExe {
 			System.out.println("------------------------------------------------------");
 			System.out.println("      상세보기: 글번호입력, 이전:p, 다음:n  메뉴로 이동:q      ");
 			System.out.println("------------------------------------------------------");
-			String str = scn.nextLine();
+			String str = scn.nextLine();				
+
 			// 메뉴 상세
 			if (str.equals("q")) {
 				break;
@@ -184,8 +190,15 @@ public class BoardExe {
 				page++;
 			} else if (str.equals("p")) {
 				page--;
-			}  else{
-				int no = Integer.parseInt(str); // 글번호
+			} else {
+				// 예외처리 글번호외에 다른 문자가 들어오면
+				int no = 0;
+				try {					
+					no = Integer.parseInt(str); // 글번호
+				} catch (NumberFormatException e) {
+					System.out.println("목록에 있는 글 번호를 선택하세요");
+					continue;
+				}
 				// 배열에서 조회
 				Board sboard = getBoard(no);
 				if (sboard == null) {
@@ -258,7 +271,7 @@ public class BoardExe {
 		}
 		return max + 1;
 	}
-	
+
 	// 정렬
 	void sort() {
 		Board temp = null;
