@@ -41,18 +41,17 @@ public class StreamExe4 {
 		ObjectInputStream ois = new ObjectInputStream(is);
 
 		List<Product> list = (List<Product>) ois.readObject();  // ClassNotFoundException 에러가 남 => 그러므로 list collection의 Product를 가진 타입으로 casting
-		for(Product product : list) {
-			System.out.println("상품코드 : " + product.prodCode);
-		}
+		  for(Product product : list) {
+			  System.out.println("상품코드 : " + product.prodCode);
+		  }
 	} catch (Exception e) {  // exception에서 나오는 모든것들을 처리 함
 		e.printStackTrace();
-	}
+	  }
 	  
         System.out.println("end of prog.");
 	}
-	
-	  public void serial() {
-			// 직렬화
+	  // 직렬화	
+	  public void serial() {    // Object -> Byte 변경
 			List<Product> list = new ArrayList<>();  // 직렬화를 구현하기 위한 리스트
 			list.add(new Product("P001"));
 			list.add(new Product("P002"));
@@ -72,4 +71,8 @@ public class StreamExe4 {
 	}
 
 }
+	  
+	  
+
+
 
