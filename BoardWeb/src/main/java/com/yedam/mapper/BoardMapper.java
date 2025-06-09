@@ -9,7 +9,8 @@ import com.yedam.vo.BoardVO;
  * package이름이 동일해야함
  */
 public interface BoardMapper {
-  public List<BoardVO> selectList();  // 목록
+  public List<BoardVO> selectList();  // 목록 사용x
+  public List<BoardVO> selectListWithPaging(int page);
   public BoardVO selectBoard(int bno); // 단건조회
   public int updateReadCnt(int bno);  // 조회 count 증가
   public int insertBoard(BoardVO board);
