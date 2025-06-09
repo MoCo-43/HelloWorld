@@ -38,4 +38,15 @@ public class BoardServiceImpl implements BoardService {
 		return false;
 	}
 
+	@Override
+	public boolean modifyBoard(BoardVO board) {
+	    int r = mapper.updateBoard(board);
+		if(r == 1) {  // 자동커밋을 할지 말지 여부를 결정. 처리된 건수를 반환
+			sqlSession.commit(); // 커밋처리
+			return true;
+			
+		} 
+		return false;
+	}
+
 }
