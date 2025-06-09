@@ -1,39 +1,37 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"
+<%@page import="com.yedam.vo.BoardVO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.yedam.service.BoardServiceImpl"%>
+<%@page import="com.yedam.service.BoardService"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.List" %>
-<%@page import="com.yedam.service.BoardService" %>
-<%@page import="com.yedam.service.BoardServiceImpl" %>
-<%@page import="com.yedam.vo.BoardVO" %>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>홈페이지</title>
+<title>Insert title here</title>
 </head>
 <body>
   <%
-  for(int i = 0; i < 10; i++) {
-	  System.out.println("Hello, World");
-  }
-  // 주석문
-  // smaple_jsp -> sample_jsp.java -> smaple_jsp.class 실행
-  %>
+  // 주석문..
+  // sample.jsp -> sample_jsp.java -> sample_jsp.class 실행.
   
-  <h3>html 테스트</h3>
+  String str = "Hello, World";
+  for (int i = 0; i < 10; i++) {
+  %>
+  <h3>여기는 HTML영역입니다.</h3>
   <%
-  String str = "Hello, world";
+  } // end of for.
+  // 여기 자바 영역.
   BoardService svc = new BoardServiceImpl();
   List<BoardVO> list = svc.boardList();
+  out.print("<ul>");
+  for (BoardVO board : list) {
   %>
-
-  <ul>
+  <li><%=board.getBoardNo() %>, <%=board.getTitle() %></li>
   <%
-    for(BoardVO board : list) {
-      System.out.println(str);
-    }
+  }
+  out.print("</ul>");
+  System.out.println(str);
   %>
-  </ul>
-
 </body>
 </html>
