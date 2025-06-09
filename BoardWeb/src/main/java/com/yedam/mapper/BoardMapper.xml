@@ -56,5 +56,6 @@
   <!-- 삭제(deleteBoard) -->
   <delete id="deleteBoard" parameterType="Board">
   delete from tbl_board
+  where board_no = #{boardNo}
   </delete>
 </mapper>

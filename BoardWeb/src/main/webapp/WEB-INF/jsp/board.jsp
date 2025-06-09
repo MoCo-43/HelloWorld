@@ -37,7 +37,7 @@
   <script>
 let bno = "<%=board.getBoardNo() %>";
 console.log(bno)
-document.querySelector('button.btn-danger').addEventListner('click', function() {
+document.querySelector('button.btn-danger').addEventListener('click', function() {
     location.href='removeBoard.do?bno=' + bno;
     })
 </script>
