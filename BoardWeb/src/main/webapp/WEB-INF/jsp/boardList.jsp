@@ -23,7 +23,7 @@
         <tbody>
         <% for (BoardVO board : list){ %>
             <tr>
-                <td><%=board.getBoardNo() %></td><td><%=board.getTitle() %>></td><td><%=board.getWriter() %></td><td><%=board.getWriteDate() %></td><td><%=board.getReadCnt() %></td>
+                <td><%=board.getBoardNo() %></td><td><%=board.getTitle() %></td><td><%=board.getWriter() %></td><td><%=board.getWriteDate() %></td><td><%=board.getReadCnt() %></td>
             </tr>
          <% } %>
         </tbody>
