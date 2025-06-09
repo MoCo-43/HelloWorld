@@ -17,12 +17,11 @@ public class RemoveBoardControl implements Control{
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		String bno = req.getParameter("bno");
-
+        // 글 상세조회
 		BoardService svc = new BoardServiceImpl();
-	    BoardVO board = new BoardVO();
-	    board.setBoardNo(Integer.parseInt(bno));
-	    svc.deleteBoard(board);
+	    svc.removeBoard(Integer.parseInt(bno));
 	    
+	    // 요청재지정(페이지이동)
 	    resp.sendRedirect("boardList.do");
 	}
 }

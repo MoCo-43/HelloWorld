@@ -1,8 +1,11 @@
 package com.yedam.common;
+
+import lombok.*;
 /*
  * DTO(Data Transfer Object)
  * 
  */
+@Data
 public class PageDTO {
   // 게시글 건수 -> 페이지 계산
 	private int start, end, currentPage;
@@ -11,7 +14,7 @@ public class PageDTO {
 	// 현재페이지 및 전체카운트?
 	public PageDTO(int page, int totalCnt) {
 	  	this.currentPage = page;  // ex> 현재 페이지가 3페이지라고 가정했을때
-	  	this.end = (int)Math.ceil(1.0 * page/10) * 10;  // 마지막페이지 계산
+	  	this.end = (int) Math.ceil(1.0 * page / 10) * 10;  // 마지막페이지 계산
 	  	this.start = this.end - 9;  // 시작페이지 계산
 	  	
 	  	// 마지막페이지 계산이 제대로 안되어, 실제 마지막페이지 계산하는 코드

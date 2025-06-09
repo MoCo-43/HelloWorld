@@ -2,7 +2,8 @@ package com.yedam.vo;
 
 import java.util.Date;
 
-import lombok.Data;
+import lombok.*;
+
 
 /*
  * 필드, 생성자, 메소드(getter/setter)

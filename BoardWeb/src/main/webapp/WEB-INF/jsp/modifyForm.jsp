@@ -12,7 +12,8 @@
   <input type="hidden" name="bno" value="<%=board.getBoardNo() %>">
   <table class="table">
     <tr>
-        <th>글번호</th><td><%=board.getBoardNo() %></td><th>조회수</th><td><%=board.getReadCnt() %></td>
+        <th>글번호</th><td><%=board.getBoardNo() %></td>
+        <th>조회수</th><td><%=board.getReadCnt() %></td>
     </tr>
     <tr>
         <th>제목</th><td colspan="3"><input type="text" name="title" value="<%=board.getTitle() %>"></td>

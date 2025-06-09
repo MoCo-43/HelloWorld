@@ -18,6 +18,10 @@ import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
 import com.yedam.vo.BoardVO;
 
+
+
+
+
 /**
  * Servlet implementation class BoardList
  */
@@ -37,7 +41,7 @@ public class BoardList extends HttpServlet {
 		
 		// 업무 서비스
 		BoardService svc = new BoardServiceImpl();
-		List<BoardVO> list = svc.boardList();
+		List<BoardVO> list = svc.boardList(1);
 		
 		out.print("<table border='1'>");
 		out.print("<thead><tr><th>글번호</th><th>제목</th><th>작성자</th></tr></thead>");

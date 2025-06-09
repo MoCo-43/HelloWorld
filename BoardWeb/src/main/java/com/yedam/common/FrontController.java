@@ -16,6 +16,7 @@ import com.yedam.control.BoardListControl;
 import com.yedam.control.ModifyBoardControl;
 import com.yedam.control.RemoveBoardControl;
 
+
 /*
  * M-V-C의 Control 역할
  * url패턴 - 실행서블릿 관리
@@ -41,6 +42,7 @@ public class FrontController extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	// url이 호출(http://localhost:8080/BoardWeb/boardList.do) -> 페이지 호출 -> Control.
         String uri = req.getRequestURI(); // /BoardWeb/boardList.do
         String page = uri.substring(9); // /boardList.do
         Control sub = map.get(page);

@@ -1,7 +1,6 @@
 package com.yedam.control;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -21,12 +20,9 @@ public class BoardControl implements Control {
     	String bno = req.getParameter("bno");  // bno의 번호를 받아와서 전달
 
     	BoardService svc = new BoardServiceImpl();
-    	List<BoardVO> list = svc.boardList();
 		// 메소드의 매개값 전달을 위해서
-		BoardVO board = svc.getBoard(Integer.parseInt(bno));
-		req.setAttribute("board",board);
-
-    	req.setAttribute("blist", list);  // 요청정보 값을 담아서 전달
+    	BoardVO board = svc.getBoard(Integer.parseInt(bno));
+		req.setAttribute("board",board); // 요청정보 값을 담아서 전달
     	// 요청재지정(페이지이동)
     	req.getRequestDispatcher("WEB-INF/jsp/board.jsp").forward(req, resp);
     }

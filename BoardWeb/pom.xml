@@ -14,18 +14,13 @@
   </build>
   
   <dependencies>
+<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <version>4.0.1</version>
       <scope>provided</scope>
     </dependency>
-  
-  	<!--<dependency>
-  		<groupId>com.yedam</groupId>
-  		<artifactId>myProject</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency> -->
   	
   	<dependency>
       <groupId>junit</groupId>
@@ -47,12 +42,13 @@
       <version>19.27.0.0</version>
     </dependency>
     
+    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.32</version>
-      <scope>provided</scope>
+      <version>1.18.38</version>
     </dependency>
+
     
   </dependencies>
   
