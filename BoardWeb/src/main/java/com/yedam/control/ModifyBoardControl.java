@@ -15,6 +15,8 @@ public class ModifyBoardControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8"); // 한글처리
+		
 		// 요청방식에 따라 GET요청이면 화면 open
 		//             POST요청이면 저장
 		String bno = req.getParameter("bno");
@@ -33,10 +35,14 @@ public class ModifyBoardControl implements Control {
 		} else if(req.getMethod().equals("POST")) {
 			BoardVO board = new BoardVO();
 			board.setBoardNo(Integer.parseInt(bno));
-			board.setContent(title);
+			board.setContent(content);
 			board.setTitle(title);
 			
 			svc.modifyBoard(board); // 수정
+			
+			// 목록페이지로 이동
+			resp.sendRedirect("boardList.do");
+			
 		}
 	}
 

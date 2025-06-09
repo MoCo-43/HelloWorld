@@ -49,4 +49,16 @@ public class BoardServiceImpl implements BoardService {
 		return false;
 	}
 
+	@Override
+	public boolean deleteBoard(BoardVO board) {
+		int r = mapper.deleteBoard(board);
+		if(r == 1) {
+			sqlSession.commit();  // 커밋처리
+			return true;
+		}
+		return false;
+	}
+	
+	
+
 }

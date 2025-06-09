@@ -34,6 +34,4 @@
     </tr>
   </table>
 </form>
-
-
 <jsp:include page="../include/footer.jsp" />

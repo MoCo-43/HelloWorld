@@ -14,5 +14,5 @@ public interface BoardMapper {
   public int updateReadCnt(int bno);  // 조회 count 증가
   public int insertBoard(BoardVO board);
   public int updateBoard(BoardVO board);
-  public int deleteBoard(int bno); 
+  public int deleteBoard(BoardVO board); 
 }

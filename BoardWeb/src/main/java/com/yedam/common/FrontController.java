@@ -14,6 +14,7 @@ import com.yedam.control.AddBoardControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
 import com.yedam.control.ModifyBoardControl;
+import com.yedam.control.RemoveBoardControl;
 
 /*
  * M-V-C의 Control 역할
@@ -35,6 +36,7 @@ public class FrontController extends HttpServlet {
         map.put("/board.do", new BoardControl());  // 상세화면
         map.put("/addBoard.do", new AddBoardControl());
         map.put("/modifyBoard.do", new ModifyBoardControl());  // 수정화면
+        map.put("/removeBoard.do", new RemoveBoardControl());  // 삭제화면
     }
 
     @Override

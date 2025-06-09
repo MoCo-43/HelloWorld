@@ -29,9 +29,16 @@
     <tr>
         <td>
           <input type="submit" value="수정" class="btn btn-warning">
-          <button>삭제</button>
+          <button class="btn btn-danger" type="button">삭제</button>
         </td>
     </tr>
   </table>
   </form>
+  <script>
+let bno = "<%=board.getBoardNo() %>";
+console.log(bno)
+document.querySelector('button.btn-danger').addEventListner('click', function() {
+    location.href='removeBoard.do?bno=' + bno;
+    })
+</script>
 <jsp:include page="../include/footer.jsp" />
