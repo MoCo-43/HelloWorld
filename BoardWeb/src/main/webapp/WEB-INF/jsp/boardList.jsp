@@ -54,10 +54,6 @@
     <a class="page-link" href="boardList.do?page=<%=paging.getEnd()+1 %>">Next</a>
   </li>
   <% } %>
-  
-  <li class="page-item">
-    <a class="page-link" href="#">Next</a>
-  </li>
   </ul>
   </nav>
   <!-- paging 종료 -->
