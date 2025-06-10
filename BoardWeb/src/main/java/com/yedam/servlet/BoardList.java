@@ -10,10 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.session.SqlSession;
-
-import com.yedam.common.DataSource;
-import com.yedam.mapper.BoardMapper;
+import com.yedam.common.SearchDTO;
 import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
 import com.yedam.vo.BoardVO;
@@ -40,8 +37,9 @@ public class BoardList extends HttpServlet {
 		out.print("<p>from 정경준_servlet</p>");
 		
 		// 업무 서비스
+		SearchDTO search = new SearchDTO();
 		BoardService svc = new BoardServiceImpl();
-		List<BoardVO> list = svc.boardList(1);
+		List<BoardVO> list = svc.boardList(search);
 		
 		out.print("<table border='1'>");
 		out.print("<thead><tr><th>글번호</th><th>제목</th><th>작성자</th></tr></thead>");

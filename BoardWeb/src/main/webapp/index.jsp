@@ -23,7 +23,7 @@
   } // end of for.
   // 여기 자바 영역.
   BoardService svc = new BoardServiceImpl();
-  List<BoardVO> list = svc.boardList(2);
+  List<BoardVO> list = svc.boardList(null);
   out.print("<ul>");
   for (BoardVO board : list) {
   %>

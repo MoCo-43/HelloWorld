@@ -2,6 +2,7 @@ package com.yedam.mapper;
 
 import java.util.List;
 
+import com.yedam.common.SearchDTO;
 import com.yedam.vo.BoardVO;
 
 /*
@@ -10,10 +11,14 @@ import com.yedam.vo.BoardVO;
  */
 public interface BoardMapper {
   public List<BoardVO> selectList();  // 목록 사용x
-  public List<BoardVO> selectListWithPaging(int page);
+  public List<BoardVO> selectListWithPaging(SearchDTO search);
   public BoardVO selectBoard(int bno); // 단건조회
   public int updateReadCnt(int bno);  // 조회 count 증가
   public int insertBoard(BoardVO board);
   public int updateBoard(BoardVO board);
   public int deleteBoard(int bno); 
+  
+  
+  // 전체건수
+  public int selectCount(SearchDTO search);
 }

@@ -1,6 +1,8 @@
 package com.yedam.control;
 
 import java.io.IOException;
+import java.net.URL;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +25,13 @@ public class ModifyBoardControl implements Control {
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 
+		// 추가파라미터
+    	String page = req.getParameter("page");
+    	String sc = req.getParameter("searchCondition");
+    	String kw = req.getParameter("keyword");
+    	kw = URLEncoder.encode(kw); // 주소표시줄
+    	System.out.println(kw);
+
 		BoardService svc = new BoardServiceImpl();
 
 		
@@ -31,6 +40,9 @@ public class ModifyBoardControl implements Control {
 			// 요청재지정(페이지이동)  modifyBoard.do?bno=23   <-이러한 형태로 지정함
 			BoardVO board = svc.getBoard(Integer.parseInt(bno)); //
 			req.setAttribute("board", board); // 조회만을 위해 사용함
+			req.setAttribute("page", page);
+			req.setAttribute("searchCondition", sc);
+			req.setAttribute("keyword", kw);
 			req.getRequestDispatcher("WEB-INF/jsp/modifyForm.jsp").forward(req, resp);
 		} else if(req.getMethod().equals("POST")) {
 			BoardVO board = new BoardVO();
@@ -41,7 +53,7 @@ public class ModifyBoardControl implements Control {
 			svc.modifyBoard(board); // 수정
 			
 			// 목록페이지로 이동
-			resp.sendRedirect("boardList.do");
+			resp.sendRedirect("boardList.do?page="+page+"&searchCondition="+sc+"&keyword="+kw);
 			
 		}
 	}
