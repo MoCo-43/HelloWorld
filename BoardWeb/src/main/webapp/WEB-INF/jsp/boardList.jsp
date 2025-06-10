@@ -55,7 +55,10 @@
   </table>
   <!-- paging 시작. -->
 <nav aria-label="Page navigation example">
-<ul class="pagination justify-content-center">
+
+<!-- <ul class="pagination justify-content-center">  -->
+
+  <ul class="pagination">
   <!-- 이전페이지 활성화. -->
   <%if(!paging.isPrev()) {%>
   <li class="page-item disabled">
