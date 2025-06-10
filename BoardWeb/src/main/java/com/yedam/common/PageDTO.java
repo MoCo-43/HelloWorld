@@ -18,8 +18,8 @@ public class PageDTO {
 	  	this.start = this.end - 9;  // 시작페이지 계산
 	  	
 	  	// 마지막페이지 계산이 제대로 안되어, 실제 마지막페이지 계산하는 코드
-	  	int realEnd = (int) Math.ceil(1.0 * totalCnt / 5);  // 건수를 기준으로 실제 마지막페이지
-	  	this.end = this.end > realEnd ? realEnd : this.end;
+	  	int realEnd = (int) Math.ceil(1.0 * totalCnt / 5);  // 진짜마지막번호 = 전체 게시글 수 / (한페이지에 보여줄 계시글수)
+	  	this.end = this.end > realEnd ? realEnd : this.end;  
 	  	
 	  	// 이전, 이후 페이지의 존재 체크
 	  	this.prev = this.start > 1;

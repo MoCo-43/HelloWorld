@@ -21,7 +21,7 @@
     <input type="hidden" name="keyword" value="<%=kw %>">
     
             <%
-        System.out.println("searchCondition: " + sc); // Controller에서
+        System.out.println("searchCondition: " + sc); // Controller에서 page, searchCondition, keyword 잘 전달받아지는지 확인
         System.out.println("keyword: " + kw);
         %>
     

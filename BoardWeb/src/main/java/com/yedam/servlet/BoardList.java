@@ -14,17 +14,12 @@ import com.yedam.common.SearchDTO;
 import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
 import com.yedam.vo.BoardVO;
-
-
-
-
-
 /**
  * Servlet implementation class BoardList
  */
 @WebServlet("/boardList.serv")
 public class BoardList extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+//	private static final long serialVersionUID = 1L;
 
     public BoardList() {
     }

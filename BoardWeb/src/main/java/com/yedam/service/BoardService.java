@@ -16,6 +16,5 @@ public interface BoardService {
   public boolean removeBoard(int bno);  // 삭제기능
   
   // 전체건수
-//  public int selectCount(SearchDTO search);
   public int getTotalCount(SearchDTO search);
 }
