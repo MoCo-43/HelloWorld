@@ -17,6 +17,6 @@
   
   <root level="error">
     <appender-ref ref="stdout"/>
-  </root>
+  </root>  
 
 </configuration>
