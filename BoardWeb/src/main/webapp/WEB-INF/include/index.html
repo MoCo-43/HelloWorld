@@ -14,6 +14,7 @@
     <body>
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
+            <tiels:insertAttribute name="menu" />
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
                 <div class="list-group list-group-flush">
@@ -28,6 +29,7 @@
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
                 <!-- Top navigation-->
+                <tiles:insertAttribute name="header" />
                 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                     <div class="container-fluid">
                         <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
@@ -50,6 +52,7 @@
                     </div>
                 </nav>
                 <!-- Page content-->
+                <tiles:insertAttriute name="body" />
                 <div class="container-fluid">
                     <h1 class="mt-4">Simple Sidebar</h1>
                     <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
@@ -63,6 +66,7 @@
                 </div>
             </div>
         </div>
+        <tiles:insertAttribute name="footer" />
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

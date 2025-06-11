@@ -1,53 +1,38 @@
-<%@page import="com.yedam.common.SearchDTO"%>
-<%@page import="com.yedam.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="../include/header.jsp" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <h3>상세화면(board.jsp)</h3>
-
-  <%
-    BoardVO board = (BoardVO) request.getAttribute("board");
-    SearchDTO search = (SearchDTO) request.getAttribute("search");
-    String pg = (String) request.getAttribute("page");
-    String sc = (String) request.getAttribute("searchCondition");
-    String kw = (String) request.getAttribute("keyword");
-    String logId = (String) request.getAttribute("logId");
-  %>
   
 <form action="modifyBoard.do">
-    <input type="hidden" name="bno" value="<%=board.getBoardNo() %>">
-    <input type="hidden" name="page" value="<%=pg %>">
-    <input type="hidden" name="searchCondition" value="<%=sc %>">
-    <input type="hidden" name="keyword" value="<%=kw %>">
-    
-            <%
-        System.out.println("searchCondition: " + sc); // Controller에서 page, searchCondition, keyword 잘 전달받아지는지 확인
-        System.out.println("keyword: " + kw);
-        %>
+    <input type="hidden" name="bno" value="${board.boardNo">
+    <input type="hidden" name="page" value="${pg}">
+    <input type="hidden" name="searchCondition" value="${sc}">
+    <input type="hidden" name="keyword" value="${kw}">
     
     <table class="table">
         <tr>
             <th>글번호</th>
-            <td><%=board.getBoardNo() %></td>
+            <td>${board.boardNo}</td>
             <th>조회수</th>
-            <td><%=board.getReadCnt() %></td>
+            <td>${board.readCnt}</td>
         </tr>
         <tr>
             <th>제목</th>
-            <td colspan="3"><%=board.getTitle() %></td>
+            <td colspan="3">${board.title}</td>
         </tr>
         <tr>
             <th>내용</th>
             <td colspan="3">
-                <textarea cols="45" rows="4" class="form-control" readonly><%=board.getContent() %></textarea></td>
+                <textarea cols="45" rows="4" class="form-control" readonly>${board.content}</textarea></td>
         </tr>
         <tr>
             <th>작성자</th>
-            <td colspan="3"><%=board.getWriter() %></td>
+            <td colspan="3">${board.writer}</td>
         </tr>
         <tr>
             <th>작성일시</th>
-            <td colspan="3"><%=board.getWriteDate() %></td>
+            <td colspan="3">${board.writeDate}</td>
         </tr>
         <tr>
                 <!-- 
@@ -65,10 +50,9 @@
     </table>
 </form>
 <script>
-    let bno = "<%=board.getBoardNo() %>";
+    let bno = "${board.boardNo}";
     console.log(bno);
     document.querySelector('button.btn-danger').addEventListener('click', function () {
         location.href = 'removeBoard.do?bno=' + bno;
     })
 </script>
-<jsp:include page="../include/footer.jsp" />

@@ -49,6 +49,6 @@ public class BoardListControl implements Control  {
     	req.setAttribute("pageInfo", paging);  // 페이지 보여주는 기능 전달
     	req.setAttribute("search", search);
     	// 요청재지정(페이지 이동이 발생)	
-    	req.getRequestDispatcher("WEB-INF/jsp/boardList.jsp").forward(req, resp);   // forward 페이지 이동
+    	req.getRequestDispatcher("user/boardList.tiles").forward(req, resp);   // forward 페이지 이동
     }
 }

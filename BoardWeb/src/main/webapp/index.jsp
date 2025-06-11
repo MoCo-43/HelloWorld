@@ -11,10 +11,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:forward page="boardList.do"/>
+<!-- 
+   // 주석문..
+  // sample.jsp -> sample_jsp.java -> sample_jsp.class 실행. 
+  -->
   <%
-  // 주석문..
-  // sample.jsp -> sample_jsp.java -> sample_jsp.class 실행.
-  
   String str = "Hello, World";
   for (int i = 0; i < 10; i++) {
   %>

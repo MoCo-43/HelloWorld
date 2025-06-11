@@ -25,11 +25,14 @@ public class LoginControl implements Control {
       // 로그인 성공여부 체크
       if(member != null) {
     	// 글등록화면
-    	// 세션객체에 setAttribute("logId", member.memberId)
     	HttpSession session = req.getSession();  // cookie
     	session.setAttribute("logId", member.getMemberId());  // 어떠한 페이지에서도 접근가능  // 생명주기가 긺
-    	
-    	resp.sendRedirect("addBoard.do");
+    	// 권한에 따라 시작페이지지정
+    	if(member.getResponsibility().equals("User")) {
+    		resp.sendRedirect("addBoard.do");
+    	} else if (member.getResponsibility().equals("Admin")) {
+    		resp.sendRedirect("memberList.do");
+    	}
       } else {
     	// 로그인화면으로 이동
     	req.setAttribute("msg", "ID와 PW를 확인하세요");
