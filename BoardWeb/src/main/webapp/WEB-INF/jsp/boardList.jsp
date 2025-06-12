@@ -12,7 +12,8 @@
         <option value="">선택하세요</option>
         <option value="T" ${!empty search.searchCondition && search.searchCondition=='T' ? 'selected' : '' }>제목</option>
         <option value="W" ${!empty search.searchCondition && search.searchCondition=='W' ? 'selected' : '' }>작성자</option>
-        <option value="TW" ${!empty search.searchCondition && search.searchCondition=='TW' ? 'selected' : '' }>제목&작성자</option>
+        <option value="TW" ${!empty search.searchCondition && search.searchCondition=='TW' ? 'selected' : '' }>제목&작성자
+        </option>
       </select>
     </div>
     <div class="col-sm-6">

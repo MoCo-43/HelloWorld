@@ -8,10 +8,8 @@
     </encoder>
   </appender>
 
-  <logger name="com.yedam.mapper.BoardMapper">
-    <level value="debug"/>
-  </logger>
-  <logger name="com.yedam.mapper.MemberMapper">
+<!-- mapper package안의 모든 걸 등록 -->
+  <logger name="com.yedam.mapper">
     <level value="debug"/>
   </logger>
   

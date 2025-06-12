@@ -13,8 +13,8 @@
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-primary">
-    <% 
-      String msg = (String) request.getAttribute("msg"); 
+    <%
+      String msg = (String) request.getAttribute("msg");
     %>
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
@@ -23,11 +23,12 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
-                                    <%
-                                    if (msg != null) { %>
-                                      <span style="color: red"><%=msg %></span>
-                                    <% } %>
+                                    <div class="card-header">
+                                        <h3 class="text-center font-weight-light my-4">Login</h3>
+                                        <%if (msg != null) {%>
+                                        <span style="color: red"><%=msg %></span>
+                                        <%} %>
+                                    </div>
                                     <div class="card-body">
                                         <form action="login.do" method="post">
                                             <div class="form-floating mb-3">

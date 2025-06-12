@@ -27,6 +27,8 @@ public class LoginControl implements Control {
     	// 글등록화면
     	HttpSession session = req.getSession();  // cookie
     	session.setAttribute("logId", member.getMemberId());  // 어떠한 페이지에서도 접근가능  // 생명주기가 긺
+    	session.setAttribute("auth", member.getResponsibility());
+    	
     	// 권한에 따라 시작페이지지정
     	if(member.getResponsibility().equals("User")) {
     		resp.sendRedirect("addBoard.do");
