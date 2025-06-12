@@ -31,15 +31,15 @@ public class ReplyServiceImpl implements ReplyService {
 		}
 
 	@Override
-	public ReplyVO getReply(int rvo) {
+	public ReplyVO getReply(int rno) {
 		// 단건조회
-		return mapper.getReply(rvo);
+		return mapper.getReply(rno);
 	}
 
 	@Override
-	public boolean removeReply(int rvo) {
+	public boolean removeReply(int rno) {
 		//댓글삭제
-		int r = mapper.removeReply(rvo);
+		int r = mapper.removeReply(rno);
 		if (r == 1) {
 			sqlSession.commit();
 			return true;

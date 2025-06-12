@@ -15,7 +15,6 @@ public class AppTest {
 //	  rep.setBoardNo(221);
 //	  rep.setReply("댓글없음 ㅅㄱ");
 //	  rep.setReplyer("newbie");
-//	  
 //	  svc.addReply(rep);
 //	  
 //	  // 삭제

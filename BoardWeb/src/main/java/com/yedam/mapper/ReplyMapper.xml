@@ -4,12 +4,13 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.mapper.ReplyMapper">
   <!-- 전체댓글조회 -->
-  <select id="selectReply" resultType="Reply">
+  <select id="selectReply" resultType="int">
     select reply_no
           ,board_no
           ,reply
           ,reply_date
     from   tbl_reply
+    where board_no = #{bno}
   </select>
 
   <!-- 단건댓글조회 -->
@@ -19,21 +20,19 @@
           ,reply
           ,reply_date
     from tbl_reply
-    where board_no = ${bno}
+    where reply_no = #{rno}
   </select>
   
   
   <!-- 댓글삽입 -->
   <insert id="insertReply" parameterType="Reply">
-  insert into tbl_reply
-  (reply_no, board_no, reply, replyer)
-  values 
-  (reply_seq.nextval, ${boardNo}, ${reply}, ${replyer})
+  insert into tbl_reply (reply_no, board_no, reply, replyer)
+  values (reply_seq.nextval, #{boardNo}, #{reply}, #{replyer})
   </insert>
   
   <!-- 댓글삭제 -->
   <delete id="removeReply" parameterType="int">
   delete from tbl_reply
-  where reply_no = ${rvo}
+  where reply_no = #{rno}
   </delete>
 </mapper>
