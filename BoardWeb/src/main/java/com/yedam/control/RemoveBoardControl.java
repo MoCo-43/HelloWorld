@@ -16,10 +16,10 @@ public class RemoveBoardControl implements Control{
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String bno = req.getParameter("bno");
+		String rno = req.getParameter("rno");
         // 글 상세조회
 		BoardService svc = new BoardServiceImpl();
-	    svc.removeBoard(Integer.parseInt(bno));
+	    svc.removeBoard(Integer.parseInt(rno));
 	    
 	    // 요청재지정(페이지이동)
 	    resp.sendRedirect("boardList.do");
