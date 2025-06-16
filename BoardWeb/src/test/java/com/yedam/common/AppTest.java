@@ -22,7 +22,7 @@ public class AppTest {
 	  
 	  
 	  // 목록
-	  List<ReplyVO> list = svc.replyList(221);
+	  List<ReplyVO> list = svc.replyList(221, 1);
 	  for (ReplyVO reply : list) {
 		  System.out.println(reply.toString());
 	  }

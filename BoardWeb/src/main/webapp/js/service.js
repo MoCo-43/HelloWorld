@@ -8,9 +8,9 @@ const svc = { //기능 정의
 		return num1 + num2;
 	},
 	// 목록출력 메소드
-	replyList(bno, successCallback, errorCallback) { // function replyList() 와 같음  // 메소드(parameter 3개)
+	replyList(param = {bno, page}, successCallback, errorCallback) { // function replyList() 와 같음  // 메소드(parameter 3개)
 		// ajax호출
-	  fetch('replyList.do?bno=' + bno)  // 댓글목록
+	  fetch('replyList.do?bno=' + param.bno + "&page=" + param.page)  // 댓글목록
 	   .then(data => data.json()) // 위값이 성공했을떄
 	   .then(successCallback)  // 위 값이 성공 시 함수를 전달
 	   .catch(errorCallback)  // 예외발생시 전달
@@ -20,18 +20,26 @@ const svc = { //기능 정의
 	  // ajax
 	  fetch('removeReply.do?rno=' + rno)
 	  .then(data => data.json()) 
-	  .then(successCallback)  
+	  .then(successCallback)
 	  .catch(errorCallback)
 	},
 	// 댓글등록메소드
-	addReply(param={bno, reply, replyer }, successCallback, errorCallback) {  // parameter 3개 받음 오브젝트타입으로 + 성공 + 실패에 대한 파라미터 까지 받음
+	addReply(param={ bno, reply, replyer }, successCallback, errorCallback) {  // parameter 3개 받음 오브젝트타입으로 + 성공 + 실패에 대한 파라미터 까지 받음
 		/// 상단의 parma bno:bno, reply:reply, replyer:replyer = 선언된거랑 같음 => key:value key값 생략가능
 		// ajax
-		fetch('addReply.do?rno=', {
+		fetch('addReply.do', {
 		  method: 'post',
 		  headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		  body:  'bno=' + param.bno + '&reply=' + param.reply + '&replyer=' + param.replyer // param아래 주석 확인!! 
 		})  // add같은경우는 보통 POST요청 처리함
+		.then(data => data.json()) 
+		.then(successCallback)  
+		.catch(errorCallback)	
+	},
+	//댓글전체건수
+	replyCount(bno, successCallback, errorCallback) {
+		// ajax
+		fetch("replyCount.do?bno="+ bno)
 		.then(data => data.json()) 
 		.then(successCallback)  
 		.catch(errorCallback)	
@@ -60,7 +68,6 @@ function makeRow(item) {
 	btn.className = 'btn btn-danger';
 	td.appendChild(btn);
 	tr.appendChild(td);
-	
 	return tr;  // makeRow를 호출한 영역으로 tr 반환
 } // end of makeRow
 

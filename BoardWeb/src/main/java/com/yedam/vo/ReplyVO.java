@@ -1,7 +1,8 @@
 package com.yedam.vo;
 
+import java.util.Date;
 import lombok.Data;
-import oracle.sql.DATE;
+
 
 @Data
 public class ReplyVO {
@@ -9,5 +10,5 @@ public class ReplyVO {
   public int boardNo;
   public String reply;
   public String replyer;
-  public DATE replyDate;
+  public Date replyDate;
 }
