@@ -19,34 +19,44 @@ Date.prototype.format = function() {
 // 댓글목록 출력.
 showReplyList();
 function showReplyList() {
-  document.querySelector('#target').innerHTML = "";  // 목록지우기
-  svc.replyList({ bno, page } //게시글번호
-	, result => {
-		let ul = document.querySelector('#target');
-		let template = document.querySelector('#target li');
+	document.querySelector('#target').innerHTML = ""; // 목록지우기.
+	// 건수체크해서 마지막 페이지가 맞는지 확인하기.
+	svc.replyCount(bno, (result) => {
 		console.log(result);
-		for (let reply of result) {
-			template = makeTemplate(reply);
-			//
-			ul.insertAdjacentHTML("beforeend", template);
-		}
-		// 댓글페이지.
-		showPageList();
-	}
-	, err => console.log(err)
-);	
-}  // end of showReplyList
+		let lastPage = Math.ceil(result.totalCnt / 5);
+		page = page > lastPage ? lastPage : page; // 현재마지막 페이지 계산하기.
+		// 바뀐페이지로 목록출력하기.
+		svc.replyList({ bno, page } //게시글번호
+			, result => {
+				let ul = document.querySelector('#target');
+				let template = document.querySelector('#target li');
+				for (let reply of result) {
+					template = makeTemplate(reply);
+					ul.insertAdjacentHTML("beforeend", template);
+				}
+				// 댓글페이지.
+				showPageList();
+			}
+			, err => console.log(err)
+		);
+	}, (err) => { console.log(err) })
+} // end of showReplyList.
 // 이벤트.
 // 1)댓글등록이벤트.
 document.querySelector('#addReply').addEventListener('click', addReplyHandler);
+
 // 2)댓글링크 이벤트등록.
 function pagingEvent() {
 	document.querySelectorAll('.footer nav a').forEach(function(elem, idx) {
 		elem.addEventListener('click', function(e) {
 			page = e.target.dataset.page; // a태그의 <a data-page="1">1</a>
-			showPageList();
+			showReplyList();
 		})
 	});
+	document.querySelectorAll('#target li').forEach(elem => {
+		elem.addEventListener('mouseover', () => { elem.style.background = 'beige' });
+		elem.addEventListener('mouseout', () => { elem.style.background = '' });
+	})
 } // end of pagingEvent.
 // 댓글등록이벤트핸들러.
 function addReplyHandler(e) {
@@ -62,15 +72,14 @@ function addReplyHandler(e) {
 			if (result.retCode == "Success") {
 				let rval = result.retVal; // 반환값에는 retCode, retVal 있음.
 				//ul.insertAdjacentHTML("afterbegin", makeTemplate(rval));
-				page = 1;  // 첫페이지로 지정
-				showReplyList();  // 목록출력
+				page = 1; //첫페이지로 지정.
+				showReplyList(); // 목록출력.
 				document.querySelector('#reply').value = ""; // 입력값 초기화.
 			} // end of if.
 		} // 두번째 매개값.
 		, err => console.log(err) // 세번째 매개값.
 	)
 } // end of addReplyHandler.
-
 // 댓글페이징 출력.
 function showPageList() {
 	svc.replyCount(bno // 첫번째매개값.
@@ -93,20 +102,20 @@ function showPageList() {
 			let str;
 			if (prev) {
 				str = `<li class="page-item">
-			             <a class="page-link" href="#" data-page="${start-1}">Previous</a>
-			           </li>`;
+			           <a class="page-link" href="#" data-page="${start - 1}">Previous</a>
+			         </li>`;
 			} else {
 				str = `<li class="page-item disabled">
-			             <span class="page-link" href="#">Previous</span>
-			           </li>`;
+			           <span class="page-link" href="#">Previous</span>
+			         </li>`;
 			}
 			target.insertAdjacentHTML('beforeend', str);
 			// 1 ~ 10 페이징.
 			for (let p = start; p <= end; p++) {
 				if (p == page) { // 선택페이지 지정.
 					str = `<li class="page-item active" aria-current="page">
-				             <span class="page-link">${p}</span>
-				           </li>`;
+				           <span class="page-link">${p}</span>
+				         </li>`;
 				} else {
 					str = `<li class="page-item"><a class="page-link" href="#" data-page="${p}">${p}</a></li>`;
 				}
@@ -115,7 +124,7 @@ function showPageList() {
 			// 이후페이지.
 			if (next) {
 				str = `<li class="page-item">
-				         <a class="page-link" href="#" data-page="${end+1}">Next</a>
+				         <a class="page-link" href="#" data-page="${end + 1}">Next</a>
 				       </li>`;
 			} else {
 				str = `<li class="page-item disabled">
@@ -132,36 +141,38 @@ function showPageList() {
 // 댓글화면출력.
 function makeTemplate(reply = {}) {
 	let rdate = new Date(reply.replyDate).format();
-	let delBtn = "";  // 삭제버튼 생성
-	if (reply.replyer == logId) {  // 댓글을단 사람과 로그인한 사람을 비교해서
-		delBtn = `<button onclick="deleteReply(event)" class="btn btn-danger">삭제</button>`;  // 일치한다면 삭제버튼을 생성
-	} else {  // 아니라면 버튼자체가 안보이게 처리
-		
-	}
 	template = `
       <li data-rno=${reply.replyNo}>
         <span class="col-sm-1">${reply.replyNo}</span>
         <span class="col-sm-5">${reply.reply}</span>
         <span class="col-sm-1">${reply.replyer}</span>
         <span class="col-sm-3">${rdate}</span>
-        <span class="col-sm-1">${delBtn}</span>
+        <span class="col-sm-1"><button onclick="deleteReply(event)" class="btn btn-danger">삭제</button></span>
       </li>
 	`;
 	return template; // <li>...</li> 반환.
 }
 // 댓글삭제함수.
-function deleteReply(e) {
+async function deleteReply(e) {
 	let rno = e.target.parentElement.parentElement.dataset.rno;
+	let data = await fetch('replyInfo.do?rno=' + rno);
+	let result = await data.json();
+	if (result.replyer != logId) {
+		alert('권한없음!');
+		return;
+	}
+	// 권한이 있을 경우에 삭제함.
 	svc.removeReply(rno
 		, result => {
 			if (result.retCode == "Success") {
-				alert("처리성공");
+				alert("처리성공!");
 				//e.target.parentElement.parentElement.remove();
 				showReplyList();
 			} else {
-				alert("처리실패");
+				alert("처리실패!");
 			}
 		}
 		, err => console.log(err)
-	)
+	);// 삭제메소드.
+
 } // end of deleteReply.

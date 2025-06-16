@@ -50,7 +50,8 @@ const add = (num1, num2) => {
 	return num1 + num2;
 }
 
-function makeRow(item) {
+// Row(행)을 생성
+function makeRow(item) { 
 	console.log('makeRow');
 	let tr = document.createElement('tr'); // <tr></tr> 요소를 만들어 줌!!
 	tr.setAttribute('data-rno', item.replyNo);  // <tr data-rno="8"> <tr data-rno="9"> ... 
