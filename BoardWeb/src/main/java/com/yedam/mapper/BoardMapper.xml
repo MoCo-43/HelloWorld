@@ -112,5 +112,26 @@
 	group by writer, member_name  
   </select>
   
-
+  <!-- Event 리스트 보기 -->
+  <select id="selectEvent">
+    select title as "title"
+          ,start_event as "start"
+          ,end_event as "end"
+    from tbl_events
+  </select>
+  
+  <!-- Event 추가 -->
+  <insert id="insertEvent" parameterType="map">
+    insert into tbl_events
+    values (events_seq.nextval, #{title}, #{start_event}, {#{end_event})
+  </insert>
+  
+  <!-- Event 지우기 -->
+  <delete id="deleteEvent" parameterType="map">
+    delete from tbl_events
+    where title = #{title}
+         ,start_event = #{start}
+         ,end_event = #{end}
+  </delete>
+  
 </mapper>

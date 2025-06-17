@@ -22,7 +22,7 @@ public interface BoardService {
   public List<Map> chartCount();
   
   // Event
-  public List<EventVO> eventList(EventVO event);
-  public boolean insertEvent(EventVO event);
-  public boolean deleteEvent(String title);
+  public List<Map<String, String>> eventList();
+  public boolean addEvent(Map<String, String> map);
+  public boolean removeEvent(Map<String, String> map);
 }

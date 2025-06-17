@@ -23,9 +23,8 @@ public interface BoardMapper {
   public int selectCount(SearchDTO search);
   public List<Map> selectUserByCount();
   
-  // mapper
-  public List<EventVO> selectEvent();
-  public int insertEvent(EventVO event);
-  public int removeEvent(String title); 
-
+  // FullCalendar Mapper
+  public List<Map<String, String>> selectEvent();
+  public int insertEvent(Map<String, String> map);
+  public int deleteEvent(Map<String, String> map);
 }

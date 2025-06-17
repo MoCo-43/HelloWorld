@@ -74,36 +74,35 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.selectUserByCount();
 	}
 
-	
-	
+	// 이벤트부분
 	@Override
-	public List<EventVO> eventList(EventVO event) {
+	public List<Map<String, String>> eventList() {
 		return mapper.selectEvent();
 	}
 
-	
-	// 이벤트부분
 	@Override
-	public boolean insertEvent(EventVO event) {
-	  int r = mapper.insertEvent(event);
-	  if (r == 1) {
-		  sqlSession.commit();
-		  return true;
-
-	  }
-	  return false;
+	public boolean addEvent(Map<String, String> map) {
+		int r = mapper.insertEvent(map);
+		if (r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
 	}
 
 	@Override
-	public boolean deleteEvent(String title) {
-      String eventTitle = title;
-		  if (eventTitle.equals(title)) {
-			  sqlSession.commit();
-			  return true;
-
-		  }
-		  return false;
+	public boolean removeEvent(Map<String, String> map) {
+		int r = mapper.deleteEvent(map);
+		if (r == 1) {
+			sqlSession.commit();
+			return true;
 		}
+		return false;
+	}
+
+	
+
+    
 
 	
 	

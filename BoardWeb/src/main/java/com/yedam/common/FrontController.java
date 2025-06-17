@@ -19,6 +19,7 @@ import com.yedam.control.BoardListControl;
 import com.yedam.control.ChartControl;
 import com.yedam.control.ChartPageControl;
 import com.yedam.control.EventListControl;
+import com.yedam.control.EventListPageControl;
 import com.yedam.control.GetReplyControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LoginFormControl;
@@ -71,9 +72,12 @@ public class FrontController extends HttpServlet {
         map.put("/removeReply.do", new RemoveReplyControl());  // 댓글삭제
         map.put("/getReply.do", new GetReplyControl());  // 단건조회
         map.put("/replyCount.do", new ReplyCountControl());  // 댓글건수
+        
+        // FullCalendar
         map.put("/eventList.do", new EventListControl());
         map.put("/addEvent.do", new AddEventControl());
         map.put("/removeEvent.do", new RemoveEventControl());
+        map.put("/eventListPage.do", new EventListPageControl());
     }
 
     @Override

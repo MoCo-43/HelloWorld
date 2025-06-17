@@ -8,6 +8,4 @@ public class EventVO {
   public String title;
   public Date startEvent;
   public Date endEvent;
-  public String url;
-
 }
