@@ -28,7 +28,7 @@ public class BoardListControl implements Control  {
     	sc = sc == null ? "" : sc; // null값이 경우
     	String kw = req.getParameter("keyword");
     	kw = kw == null ? "" : kw; // null값이 경우
-    	kw = URLDecoder.decode(kw);
+    	kw = URLDecoder.decode(kw);  // 16진수-> 한글
     	
     	req.setAttribute("page", page);
     	req.setAttribute("searchCondition", sc);

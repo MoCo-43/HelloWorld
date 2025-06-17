@@ -1,9 +1,11 @@
 package com.yedam.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.yedam.common.SearchDTO;
 import com.yedam.vo.BoardVO;
+import com.yedam.vo.EventVO;
 
 /*
  * 업무단위의 처리
@@ -16,5 +18,11 @@ public interface BoardService {
   public boolean removeBoard(int bno);  // 삭제기능
   
   // 전체건수
-  public int getTotalCount(SearchDTO search);
+  public int getTotalCount(SearchDTO search);  // selectCount();
+  public List<Map> chartCount();
+  
+  // Event
+  public List<EventVO> eventList(EventVO event);
+  public boolean insertEvent(EventVO event);
+  public boolean deleteEvent(String title);
 }

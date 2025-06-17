@@ -99,4 +99,18 @@
     </when>
     </choose>
   </select>
+  
+    
+  <!-- 통계할때조회 -->
+  <select id="selectUserByCount" resultType="map">
+    select writer as "writer"
+         , member_name as "member_name"
+         , count(1) as "cnt"
+	from tbl_board b
+	join tbl_member m
+	on b.writer = m.member_id
+	group by writer, member_name  
+  </select>
+  
+
 </mapper>
