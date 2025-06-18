@@ -122,16 +122,16 @@
   
   <!-- Event 추가 -->
   <insert id="insertEvent" parameterType="map">
-    insert into tbl_events
-    values (events_seq.nextval, #{title}, #{start_event}, {#{end_event})
+    insert into tbl_events (title, start_event, end_event)
+    values (#{title}, #{start}, #{end})
   </insert>
   
   <!-- Event 지우기 -->
   <delete id="deleteEvent" parameterType="map">
     delete from tbl_events
     where title = #{title}
-         ,start_event = #{start}
-         ,end_event = #{end}
+    and   start_event = #{start}
+    and   end_event = #{end}
   </delete>
   
 </mapper>

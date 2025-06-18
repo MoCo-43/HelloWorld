@@ -46,7 +46,7 @@
       },
       eventClick: async function(arg) {
     	  console.log(arg);// arg를 활용.
-        if (confirm('Are you sure you want to delete this event?')) {
+        if (confirm('정말 해당 이벤트를 지우시겠습니까?')) {
         	// 파라미터.
         	let startStr = arg.event.startStr.substring(0, 19);
         	let endStr = arg.event.endStr.substring(0, 19);

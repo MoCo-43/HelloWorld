@@ -20,7 +20,7 @@ import com.yedam.control.ChartControl;
 import com.yedam.control.ChartPageControl;
 import com.yedam.control.CheckControl;
 import com.yedam.control.EventListControl;
-import com.yedam.control.EventListPageControl;
+import com.yedam.control.EventPageControl;
 import com.yedam.control.GetReplyControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LoginFormControl;
@@ -81,8 +81,8 @@ public class FrontController extends HttpServlet {
         map.put("/eventList.do", new EventListControl());
         map.put("/addEvent.do", new AddEventControl());
         map.put("/removeEvent.do", new RemoveEventControl());
-        map.put("/eventListPage.do", new EventListPageControl());
-    }
+        map.put("/eventPage.do", new EventPageControl());
+       }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

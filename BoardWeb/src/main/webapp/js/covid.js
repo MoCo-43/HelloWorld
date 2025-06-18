@@ -9,6 +9,7 @@ fetch(url)
    .then(data => data.json())
    .then(result => {
    centerAry = result.data;  // [ {}, {}, .... ,{}]
+   console.log(centerAry);
    // tr>td*2
    // #centerList
    // [].forEach(Function(elem, idx, ary) { })
