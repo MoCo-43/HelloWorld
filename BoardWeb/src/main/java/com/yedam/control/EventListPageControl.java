@@ -12,7 +12,7 @@ public class EventListPageControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	  req.getRequestDispatcher("/WEB-INF/event.jsp").forward(req,  resp);
+	  req.getRequestDispatcher("/WEB-INF/selectable.html").forward(req,  resp);
 	  
 	}
 

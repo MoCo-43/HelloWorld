@@ -18,14 +18,14 @@ public class RemoveEventControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String title = req.getParameter("title");// 원본이름
-		String start = req.getParameter("start_event");// 시작일
-		String end = req.getParameter("end_event");// 마지막일
+		String start = req.getParameter("start");// 시작일
+		String end = req.getParameter("end");// 마지막일
 
 
 		Map<String, String> map = new HashMap<>();
 		map.put("title", title);
-		map.put("start_event", start);
-		map.put("end_event", end);
+		map.put("start", start);
+		map.put("end", end);
 
 		BoardService svc = new BoardServiceImpl();
 		if (svc.removeEvent(map)) {

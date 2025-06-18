@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset='utf-8' />
-<script src='../dist/index.global.js'></script>
+<script src='./dist/index.global.js'></script>
 <script>
 
   document.addEventListener('DOMContentLoaded',async function() {
@@ -28,8 +28,10 @@
         	// 파라미터.
         	let startStr = arg.startStr.substring(0, 19);
         	let endStr = arg.endStr.substring(0, 19);
+        	console.log(startStr);
+        	console.log(endStr);
     			// ajax.
-        	let response = await fetch('addEvent.do?title='+title+'&start='+startStr+'&end='+endStr+'&url='+url);
+        	let response = await fetch('addEvent.do?title='+title+'&start='+startStr+'&end='+endStr);
         	let obj = await response.json();
         	if (obj.retCode == 'Success') {       		  
             calendar.addEvent({
