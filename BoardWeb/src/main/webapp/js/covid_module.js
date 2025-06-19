@@ -7,6 +7,9 @@ let url = `https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=284&ser
 
 function makeRow(center) {
   let tr = document.createElement('tr');
+  tr.addEventListener('click', function(e) {  // 클릭하면 map띄어주기 위한 기능
+	window.open('map.jsp?lat=' + center.lat + '&lng=' + center.lng);
+  })
   for(const prop of ['id', 'centerName', 'phoneNumber', 'address']) {  
 	let td = document.createElement('td'); // <td></td>
 	td.innerHTML = center[prop];  // center['id']  // <td>1</td>
